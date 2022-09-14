@@ -1,0 +1,41 @@
+main {
+    background-color: #8FE1D9;
+}
+/* ESTILIZAÇÃO DAS IDS*/
+#menu {
+	/*height: 300px;*/
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	border: 1px solid red;
+}
+#pesquisa {
+    justify-content: center;
+    height: 40px;
+    width: 1370px;
+}
+#card-vacinas {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+    margin-left: 159px;
+    margin-right: 159px;
+
+	border: 1px solid blue;
+}
+/* ESTILIZAÇÃO DAS CLASS*/
+.item-menu {
+	align-items: center;
+	border: 1px solid red;
+	margin-top: 17px;
+	margin-bottom: 17px;
+}
+.item-vacinas {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    width: 330px;
+    height: 321px;
+}

@@ -1,5 +1,9 @@
+header {
+    background-color: #8FE1D9;
+}
 main {
-    background: linear-gradient(179.55deg, rgba(255, 255, 255, 0.24) 15.85%, rgba(255, 255, 255, 0.48) 40.1%, rgba(255, 255, 255, 0) 68.12%);
+	background-image: url(../imagens/imgfundo.jpg);
+	padding: 250px;
 }
 main button {
     background-color: #419ED7;
@@ -14,19 +18,17 @@ main button {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	align-items: center;
+
+	border: 1px solid red;
 }
 #conteudo {
     text-align: center;
+	
 }
 /* ESTILIZAÇÃO DAS CLASS*/
-/*.item-cartoes {
-	background: #5dcad1;
-	height: 230px;
-	width: 230px;
-	margin: 30px;
+.item-menu {
 	align-items: center;
-	justify-content: center;
-	box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.5); 
-	transition: 0.2s ease;
-}*/
+	border: 1px solid red;
+	margin-top: 17px;
+	margin-bottom: 17px;
+}
