@@ -1,0 +1,29 @@
+main {
+    background-color: #add4d1;
+}
+/* ESTILIZAÇÃO DAS IDS*/
+#menu {
+	/*height: 300px;*/
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	border: 1px solid red;
+}
+#botao-entrar {
+    margin-top: 93px;
+    margin-bottom: 145px;
+    text-align: center;
+}
+#conteudo {
+    text-align: center;
+	
+}
+/* ESTILIZAÇÃO DAS CLASS*/
+.item-menu {
+	align-items: center;
+	border: 1px solid red;
+	margin-top: 17px;
+	margin-bottom: 17px;
+}

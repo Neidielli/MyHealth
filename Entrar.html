@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Recuperar Senha</title>
+        <title>Entrar</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="CSS/css_geral.css">
+        <link rel="stylesheet" type="text/css" href="CSS/Entrar.css">
         
     </head>
 
@@ -17,7 +18,7 @@
                     <span>MyHealth</span>
                 </div>
                 
-                <div>
+                <div class="item-menu">
                     <button>Já tenho conta</button>
                 </div>
 
@@ -27,14 +28,20 @@
 
         <main>
 
-            <div> <!--DIV  do input -->
+            <div id="conteudo"> <!--DIV  do input -->
+                <p>Email</p>
                 <input type="text" name="Email" id="email" placeholder="Digite seu email">
+                <p>Senha</p>
                 <input type="password" name="Senha" id="senha" placeholder="Digite sua senha">  
-                
-                <button>Entrar</button>
-            </div>
 
-            <a href="Recuperar_Senha.html">Esqueci minha senha</a>
+                </br>
+                
+                <button class="botao-padrao" id="botao-entrar">Entrar</button>
+
+                </br>
+                <a href="Recuperar_Senha.html">Esqueci minha senha</a>
+            </div> <!-- FIM DIV  do input -->
+
 
         </main>
     </body>

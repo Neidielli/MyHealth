@@ -1,5 +1,5 @@
 main {
-    background-color: #8FE1D9;
+    background-color: #add4d1;
 }
 /* ESTILIZAÇÃO DAS IDS*/
 #menu {
@@ -38,4 +38,8 @@ main {
     border-radius: 10px;
     width: 330px;
     height: 321px;
+}
+.item-vacinas h1, button, h6 {
+	align-content: center;
+	justify-content: center;
 }
