@@ -18,8 +18,8 @@ main button {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
-
-	border: 1px solid red;
+	margin-left: 15px;
+	margin-right: 15px;
 }
 #conteudo {
     text-align: center;

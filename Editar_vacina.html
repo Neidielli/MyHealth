@@ -29,9 +29,40 @@
         
         <main>
 
+            <div>
+                <label for="data-vacina">Data de vacinação</label>
+                <input type="date" name="data" id="data-vacina">
+            </div>
+
+            <div>
+                <label for="nome-vacina">Vacina</label>
+                <input type="text" name="vacina" id="nome-vacina">
+            </div>
+
+            <div>
+                    <label for="data">Dose
+                    <input class="radio" type="radio" name="1dose" id="dose">1a. dose
+                    <input class="radio" type="radio" name="2dose" id="dose">2a. dose
+                    <input class="radio" type="radio" name="3dose" id="dose">3a. dose
+                    <input class="radio" type="radio" name="dose-reforco" id="dose">Reforço
+                    <input class="radio" type="radio" name="dose-unica" id="dose">Dose única
+                </label>
+            </div>
+
+            <div>
+                <label for="data">Comprovante da vacina</label>
+                <input type="date" name="data" id="data">
+            </div>
+
+            <div>
+                <label for="proxima-vacina">Próxima vacinação</label>
+                <input type="date" name="data" id="proxima-vacina">
+            </div>
+
             <button>Excluir</button> <!--USAR POSITION ABSOLUTE-->
             <button class="botao-padrao">Salvar alterações</button>
         </main>
+        
     </body>
 
 </html>
