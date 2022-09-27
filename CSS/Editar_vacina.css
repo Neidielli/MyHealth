@@ -10,6 +10,11 @@ input.radio {
 	width: auto;
 	height: auto;
 }
+fieldset {
+	border: none;
+	align-items: center;
+	justify-content: center;
+}
 /* ESTILIZAÇÃO DAS IDS*/
 #menu {
 	/*height: 300px;*/

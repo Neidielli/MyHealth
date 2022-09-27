@@ -54,6 +54,7 @@ input.pesquisa {
     border-radius: 10px;
     width: 330px;
     height: 321px;
+	margin-bottom: 10px;
 }
 .item-vacinas h1, button, h6 {
 	align-content: center;
