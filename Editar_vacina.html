@@ -13,7 +13,7 @@
 
             <div id="menu">
 
-                <div class="item-menu">
+                <div class="item-menu logo">
                     <img class="seringa-icon" src="Imagens/vacina-icone.png" alt="">
                     <span>MyHealth</span>
                 </div>
@@ -28,41 +28,69 @@
         </header>
         
         <main>
-        <fieldset>
-            <div>
-                <label for="data-vacina">Data de vacinação</label>
-                <input type="date" name="data" id="data-vacina">
-            </div>
+            <fieldset>
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="data-vacina">Data de vacinação</label>
+                    </div>
+                    <div class="rigth">
+                        <input type="date" name="data" id="data-vacina">
+                    </div>
+                </div>
 
-            <div>
-                <label for="nome-vacina">Vacina</label>
-                <input type="text" name="vacina" id="nome-vacina">
-            </div>
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="nome-vacina">Vacina</label>
+                    </div>
+                    <div class="rigth">
+                        <input type="text" name="vacina" id="nome-vacina">
+                    </div>
+                </div>
 
-            <div>
-                    <label for="data">Dose
-                    <input class="radio" type="radio" name="1dose" id="dose">1a. dose
-                    <input class="radio" type="radio" name="2dose" id="dose">2a. dose
-                    <input class="radio" type="radio" name="3dose" id="dose">3a. dose
-                    <input class="radio" type="radio" name="dose-reforco" id="dose">Reforço
-                    <input class="radio" type="radio" name="dose-unica" id="dose">Dose única
-                </label>
-            </div>
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="dose">Dose</label>
+                    </div>
 
-            <div>
-                <label for="comprovante">Comprovante da vacina</label>
-                <input type="button" name="comprovante" id="comprovante" placeholder="Selecionar imagem...">
+                    <div class="rigth">
+                        <input class="radio" type="radio" name="dose" id="dose"><span>1a. dose</span>
+                        <input class="radio" type="radio" name="dose" id="dose"><span>2a. dose</span>
+                        <input class="radio" type="radio" name="dose" id="dose"><span>3a. dose</span>
+                        <input class="radio" type="radio" name="dose" id="dose"><span>Reforço</span>
+                        <input class="radio" type="radio" name="dose" id="dose"><span>Dose única</span>
+                    </div>
+                    
+                </div>
 
-            </div>
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="comprovante">Comprovante da vacina</label>
+                    </div>
+                    
+                    <div class="rigth">
+                        <button id="selecionar-imagem">Selecionar imagem...</button>
+                        </br>
+                        <img src="imagens/image-comprovante.png" id="imagem-selecionada">
+                    </div>
+                </div>
 
-            <div>
-                <label for="proxima-vacina">Próxima vacinação</label>
-                <input type="date" name="data" id="proxima-vacina">
-            </div>
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="proxima-vacina">Próxima vacinação</label>
+                    </div>
+                    
+                    <div class="rigth">
+                        <input type="date" name="data" id="proxima-vacina">
+                    </div>
+                </div>
 
-            <button>Excluir</button> <!--USAR POSITION ABSOLUTE-->
-            <button class="botao-padrao">Salvar alterações</button>
-        </fieldset>
+                <button id="botao-excluir">Excluir</button> <!--USAR POSITION ABSOLUTE-->
+
+                <div id="conteudo">
+                    <button class="botao-padrao" id="botao-salvar">Salvar alterações</button>
+                </div>
+                
+            </fieldset>
         </main>
         
     </body>

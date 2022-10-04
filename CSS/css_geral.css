@@ -1,6 +1,7 @@
 /* Tags principais */
+@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 body {
-    font-family: "Averia Libre", sans-serif;
+    font-family: "Averia Libre", cursive;
 }
 header {
     background-color:#C1E7E3;
@@ -25,4 +26,11 @@ header button {
     height: 34px;
     padding-left: 12px;
     padding-right: 12px;
+}
+.logo {
+    font-size: 48px;
+    color: #419ED7;
+}
+.item-menu button{
+    color: #FFFFFF;
 }

@@ -1,6 +1,22 @@
 main {
     background-color: #add4d1;
 }
+input {
+	width: 590px;
+	height: 50px;
+	margin-bottom: 20px;
+	font-size: 36px;
+	color: #3F92C5;
+}
+label {
+	color: #FFFFFF;
+	font-size: 36px;
+}
+fieldset {
+	border: none;
+	align-items: center;
+	justify-content: center;
+}
 /* ESTILIZAÇÃO DAS IDS*/
 #menu {
 	/*height: 300px;*/
@@ -15,15 +31,42 @@ main {
     margin-top: 93px;
     margin-bottom: 145px;
     text-align: center;
+	color:#FFFFFF;
+	font-family: 'Averia Libre';
+	font-size: 24px;
+	width: 188px;
+	height: 50px;
 }
 #conteudo {
     text-align: center;
-	
 }
 /* ESTILIZAÇÃO DAS CLASS*/
 .item-menu {
 	align-items: center;
-	border: 1px solid red;
 	margin-top: 17px;
 	margin-bottom: 17px;
+}
+.item-menu button {
+	text-align: center;
+	color:#FFFFFF;
+	font-family: 'Averia Libre';
+	font-size: 24px;
+	padding: 12px;
+	margin-right: 22px;
+}
+.div-labels {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+.left {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	width: 30%;
+	padding-right: 20px;
+}
+.rigth {
+	width: 70%;
 }

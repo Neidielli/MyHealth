@@ -13,7 +13,7 @@
 
             <div id="menu">
 
-                <div class="item-menu">
+                <div class="item-menu logo">
                     <img class="seringa-icon" src="Imagens/vacina-icone.png" alt="">
                     <span>MyHealth</span>
                 </div>
@@ -24,10 +24,23 @@
 
         <main>
 
-            <div> <!--DIV  do input -->
-                <input type="text" name="Email" id="email" placeholder="Digite seu email">
-                
-                <button class="botao-padrao">Recuperar senha</button>
+            <fieldset>
+
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="email">Email</label>
+                    </div>
+                    
+                    <div class="rigth">
+                        <input type="text" name="email" id="email">
+                    </div>
+                </div>
+
+
+            </fieldset>
+
+            <div id="conteudo">
+                <button class="botao-padrao" id="botao-recuperar">Redefinir senha</button>
             </div>
 
         </main>

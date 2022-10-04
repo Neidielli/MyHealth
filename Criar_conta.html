@@ -13,7 +13,7 @@
 
             <div id="menu">
 
-                <div class="item-menu">
+                <div class="item-menu logo">
                     <img class="seringa-icon" src="Imagens/vacina-icone.png" alt="">
                     <span>MyHealth</span>
                 </div>
@@ -25,7 +25,73 @@
         
         <main>
 
-            <button class="botao-padrao">Cadastrar</button>
+            <fieldset>
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="nome-completo">Nome completo</label>
+                    </div>
+                    <div class="rigth">
+                        <input type="text" name="nome-completo" id="nome-completo">
+                    </div>
+                </div>
+
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="genero">Gênero</label>
+                    </div>
+                    <div class="rigth">
+                        <input class="radio" type="radio" name="genero" id="masculino">Masculino
+                        <input class="radio" type="radio" name="genero" id="feminino">Feminino
+                    </div>
+                </div>
+
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="data">Data nascimento</label>
+                    </div>
+
+                    <div class="rigth">
+                        <input type="date" name="data" id="data-nascimento">
+                    </div>
+                    
+                </div>
+
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="email">Email</label>
+                    </div>
+                    
+                    <div class="rigth">
+                        <input type="text" name="email" id="email">
+                    </div>
+                </div>
+
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="senha">Senha</label>
+                    </div>
+                    
+                    <div class="rigth">
+                        <input type="password" name="senha" id="senha">
+                    </div>
+                </div>
+
+                <div class="div-labels">
+                    <div class="left">
+                        <label for="repetir-senha">Repetir senha</label>
+                    </div>
+                    
+                    <div class="rigth">
+                        <input type="password" name="repetir-senha" id="repetir-senha">
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <div id="conteudo">
+                <button class="botao-padrao" id="botao-cadastrar">Cadastrar</button>
+            </div>
+            
         </main>
     </body>
 
