@@ -13,14 +13,14 @@
         <header>
             <div id="menu">
 
-                <div class="item-menu logo">
+                <div class="item-menu logo" onclick="window.location.href='Home.html';">
                     <img class="seringa-icon" src="Imagens/vacina-icone.png" alt="" width="51px" height="51px">
                     <span>MyHealth</span>
                 </div>
                 
                 <div class="item-menu">
                     <button>Minhas vacinas</button>
-                    <button>Logout</button>
+                    <button id="btnLogOut">Logout</button>
                 </div>
 
             </div> <!-- FIM MENU -->
@@ -81,11 +81,14 @@
             </div> <!-- FIM CARD-VACINAS -->
 
             <div id="conteudo">
-                <button class="botao-padrao" id="botao-novavacina" href="Nova_vacina.html">Nova vacina</button>
+                <button class="botao-padrao" id="botao-novavacina" onclick="window.location.href='Nova_vacina.html';">Nova vacina</button>
             </div>
             
         </main>
         
+    <!-- JS -->
+    <script type="module" src="JS/home.js"></script>
+
     </body>
 
 </html>

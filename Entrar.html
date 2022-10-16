@@ -17,10 +17,6 @@
                     <img class="seringa-icon" src="Imagens/vacina-icone.png" alt="">
                     <span>MyHealth</span>
                 </div>
-                
-                <div class="item-menu">
-                    <button>Já tenho conta</button>
-                </div>
 
             </div> <!-- FIM MENU -->
 
@@ -36,7 +32,7 @@
                     </div>
                     
                     <div class="rigth">
-                        <input type="text" name="email" id="email">
+                        <input type="text" name="email" id="txtEmail">
                     </div>
                 </div>
 
@@ -46,21 +42,31 @@
                     </div>
                     
                     <div class="rigth">
-                        <input type="password" name="senha" id="senha">
+                        <input type="password" name="senha" id="passwSenha">
                     </div>
                 </div>
-
 
             </fieldset>
 
             <div id="conteudo"> 
                 
+                <div>
+                    <span id="lblAviso"> </span> 
+                </div>
+
                 <button class="botao-padrao" id="botao-entrar">Entrar</button>
                 </br>
-                <a href="Recuperar_Senha.html">Esqueci minha senha</a>
+
+                <div>
+                    <span id="esqueci-senha">Esqueci minha senha</span>
+                </div>
             </div> 
 
         </main>
+
+        <!--JAVASCRIPT-->
+        <script type="module" src="JS/login.js"></script>
+        
     </body>
 
 </html>
