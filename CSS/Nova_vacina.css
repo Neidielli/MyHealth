@@ -1,63 +1,64 @@
 main {
     background-color: #add4d1;
+	border: 1px solid #add4d1;
 }
 input {
-	width: 300px;
-	height: 48px;
-	margin-bottom: 20px;
-	font-size: 36px;
+	width: 280px;
+	height: 45px;
+	margin-bottom: 15px;
+	font-size: 30px;
 	color: #3F92C5;
 }
 label {
 	color: #FFFFFF;
-	font-size: 36px;
+	font-size: 30px;
 }
 input.radio {
-	width: 35px;
-	height: 35px;
+	width: 30px;
+	height: 30px;
 	color: #FFFFFF;
 }
 fieldset {
 	width: 100%;
 	border: none;
-	/*align-items: center;
-	justify-content: center;*/
+	margin-top: 48px;
 }
 /* ESTILIZAÇÃO DAS IDS*/
 #menu {
-	/*height: 300px;*/
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	height: 90px;
 	margin-left: 15px;
 	margin-right: 15px;
 }
 #dose {
-	font-size: 30px;
+	font-size: 28px;
 	color: #FFFFFF;
 }
 #selecionar-imagem {
 	background-color: #419ED7;
     border: 1px solid #419ED7;
     box-sizing: border-box;
-    height: 47px;
-    width: 299px;
+    height: 45px;
+    width: 290px;
 	color:#FFFFFF;
 	font-family: 'Averia Libre';
 	font-size: 24px;
 	margin-bottom: 10px;
 }
 #imagem-selecionada {
-	margin-bottom: 32px;
+	margin-bottom: 30px;
+	width: 290px;
 }
 #botao-cadastrar {
-    margin-top: 93px;
-    margin-bottom: 145px;
+    margin-top: 60px;
+    margin-bottom: 120px;
     text-align: center;
 	color:#FFFFFF;
 	font-family: 'Averia Libre';
-	font-size: 24px;
+	font-size: 23px;
 	width: 188px;
 	height: 50px;
 }
@@ -66,9 +67,8 @@ fieldset {
 }
 /* ESTILIZAÇÃO DAS CLASS*/
 .item-menu {
-	align-items: center;
-	margin-top: 17px;
-	margin-bottom: 17px;
+	margin-top: 13px;
+	margin-bottom: 13px;
 }
 .item-menu button {
 	text-align: center;
@@ -89,9 +89,9 @@ fieldset {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
-	width: 30%;
+	width: 40%;
 	padding-right: 20px;
 }
 .rigth {
-	width: 70%;
+	width: 60%;
 }

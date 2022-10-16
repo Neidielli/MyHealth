@@ -1,25 +1,28 @@
 main {
     background-color: #add4d1;
+	border: 1px solid #add4d1;
+	height: calc(100vh - 90px);
 }
 input {
-	width: 590px;
-	height: 50px;
+	width: 585px;
+	height: 45px;
 	margin-bottom: 20px;
-	font-size: 36px;
+	font-size: 30px;
 	color: #3F92C5;
 }
 label {
 	color: #FFFFFF;
-	font-size: 36px;
+	font-size: 30px;
 }
 fieldset {
 	border: none;
 	align-items: center;
 	justify-content: center;
+	margin-top: 250px;
 }
 /* ESTILIZAÇÃO DAS IDS*/
 #menu {
-	/*height: 300px;*/
+	height: 90px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -28,23 +31,31 @@ fieldset {
 	margin-right: 15px;
 }
 #botao-entrar {
-    margin-top: 93px;
-    margin-bottom: 145px;
+    margin-top: 50px;
+    margin-bottom: 90px;
     text-align: center;
 	color:#FFFFFF;
 	font-family: 'Averia Libre';
-	font-size: 24px;
-	width: 188px;
+	font-size: 23px;
+	width: 185px;
 	height: 50px;
 }
 #conteudo {
     text-align: center;
+	margin-bottom: 57px;
+}
+#esqueci-senha {
+	font-size: 22px;
+	color: #419ED7;
+}
+#lblAviso {
+	font-size: 23px;
+	color: #FD7979;
 }
 /* ESTILIZAÇÃO DAS CLASS*/
 .item-menu {
-	align-items: center;
-	margin-top: 17px;
-	margin-bottom: 17px;
+	margin-top: 13px;
+	margin-bottom: 13px;
 }
 .item-menu button {
 	text-align: center;

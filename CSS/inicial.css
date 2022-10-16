@@ -1,9 +1,16 @@
+body {
+	margin: 0;
+}
 header {
     background-color: #8FE1D9;
 }
 main {
-	background-image: url(../imagens/imgfundo.jpg);
-	padding: 250px;
+	background: linear-gradient(179.55deg, rgba(255, 255, 255, 0.24) 15.85%, rgba(255, 255, 255, 0.48) 40.1%, rgba(255, 255, 255, 0) 68.12%), url(../imagens/imgfundo.jpg);
+	margin: 0;
+	height: calc(100vh - 90px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 main button {
     background-color: #419ED7;
@@ -13,7 +20,7 @@ main button {
 }
 /* ESTILIZAÇÃO DAS IDS*/
 #menu {
-	/*height: 300px;*/
+	height: 90px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -23,11 +30,14 @@ main button {
 }
 #conteudo {
     text-align: center;
-	
+	width: 800px;
+	height: 350px;
+	margin-left: 110px;
+	margin-right: 130px;
 }
 #botao-criarconta {
     margin-top: 85px;
-    margin-bottom: 300px;
+    margin-bottom: 30px;
     text-align: center;
 	color:#FFFFFF;
 	font-family: 'Averia Libre';
@@ -39,7 +49,7 @@ main button {
 	text-align: center;
 	color:#419ED7;
 	font-family: 'Averia Libre';
-	font-size: 64px;
+	font-size: 60px;
 }
 /* ESTILIZAÇÃO DAS CLASS*/
 .item-menu {

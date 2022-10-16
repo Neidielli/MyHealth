@@ -5,7 +5,6 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="CSS/css_geral.css">
         <link rel="stylesheet" type="text/css" href="CSS/Criar_conta.css">
-        
     </head>
 
     <body>
@@ -31,7 +30,7 @@
                         <label for="nome-completo">Nome completo</label>
                     </div>
                     <div class="rigth">
-                        <input type="text" name="nome-completo" id="nome-completo">
+                        <input type="text" name="nome-completo" id="txtNome">
                     </div>
                 </div>
 
@@ -40,8 +39,8 @@
                         <label for="genero">Gênero</label>
                     </div>
                     <div class="rigth">
-                        <input class="radio" type="radio" name="genero" id="masculino">Masculino
-                        <input class="radio" type="radio" name="genero" id="feminino">Feminino
+                        <input class="radio" type="radio" name="genero" id="generoMasculino"><label>Masculino</label>
+                        <input class="radio" type="radio" name="genero" id="generoFeminino"><label>Feminino</label>
                     </div>
                 </div>
 
@@ -51,7 +50,7 @@
                     </div>
 
                     <div class="rigth">
-                        <input type="date" name="data" id="data-nascimento">
+                        <input type="date" name="data" id="dataNascimento">
                     </div>
                     
                 </div>
@@ -62,7 +61,7 @@
                     </div>
                     
                     <div class="rigth">
-                        <input type="text" name="email" id="email">
+                        <input type="text" name="email" id="txtEmail">
                     </div>
                 </div>
 
@@ -72,7 +71,7 @@
                     </div>
                     
                     <div class="rigth">
-                        <input type="password" name="senha" id="senha">
+                        <input type="password" name="senha" id="passwSenha">
                     </div>
                 </div>
 
@@ -82,7 +81,7 @@
                     </div>
                     
                     <div class="rigth">
-                        <input type="password" name="repetir-senha" id="repetir-senha">
+                        <input type="password" name="repetir-senha" id="repetirSenha">
                     </div>
                 </div>
 
@@ -93,6 +92,10 @@
             </div>
             
         </main>
+
+        <!--JAVASCRIPT-->
+        <script type="module" src="JS/criarConta.js"></script>
+        
     </body>
 
 </html>

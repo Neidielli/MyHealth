@@ -1,7 +1,14 @@
 /* Tags principais */
 @import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box
+}
 body {
     font-family: "Averia Libre", cursive;
+    width: 100%;
 }
 header {
     background-color:#C1E7E3;
@@ -22,7 +29,7 @@ header button {
 }
 .botao-padrao {
     background-color: #49B976;
-    border:1px solid #37BD6D;
+    border: 1px solid #37BD6D;
     height: 34px;
     padding-left: 12px;
     padding-right: 12px;
