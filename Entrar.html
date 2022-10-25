@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="CSS/css_geral.css">
         <link rel="stylesheet" type="text/css" href="CSS/Entrar.css">
+        <link rel="shortcut icon" href="#">
         
     </head>
 
@@ -65,7 +66,16 @@
         </main>
 
         <!--JAVASCRIPT-->
-        <script type="module" src="JS/login.js"></script>
+
+        <script type="module">
+            import {esqueceSenha, autenticarUsuario} from './JS/login.js'
+            
+
+            window.onload = function(){   
+                document.getElementById("botao-entrar").addEventListener('click', autenticarUsuario)
+                document.getElementById("esqueci-senha").addEventListener('click', esqueceSenha)
+            }
+        </script>
         
     </body>
 

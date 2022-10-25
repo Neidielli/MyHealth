@@ -5,6 +5,14 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="CSS/css_geral.css">
         <link rel="stylesheet" type="text/css" href="CSS/Editar_vacina.css">
+
+        <script>
+            window.onload = () => {
+                document.getElementById("btnExcluir").addEventListener("click", () => {
+                    document.getElementById("popUp").style.display = "block"
+                })
+            }
+        </script>
         
     </head>
 
@@ -19,8 +27,8 @@
                 </div>
                 
                 <div class="item-menu">
-                    <button>Minhas vacinas</button>
-                    <button>Logout</button>
+                    <button onclick="window.location.href='Home.html';">Minhas vacinas</button>
+                    <button id="btnLogOut">Logout</button>
                 </div>
 
             </div> <!-- FIM MENU -->
@@ -53,11 +61,11 @@
                     </div>
 
                     <div class="rigth">
-                        <input class="radio" type="radio" name="dose" id="dose"><span>1a. dose</span>
-                        <input class="radio" type="radio" name="dose" id="dose"><span>2a. dose</span>
-                        <input class="radio" type="radio" name="dose" id="dose"><span>3a. dose</span>
-                        <input class="radio" type="radio" name="dose" id="dose"><span>Reforço</span>
-                        <input class="radio" type="radio" name="dose" id="dose"><span>Dose única</span>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>1a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>2a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>3a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>Reforço</label>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>Dose única</label>
                     </div>
                     
                 </div>
@@ -84,7 +92,18 @@
                     </div>
                 </div>
 
-                <button id="botao-excluir">Excluir</button> <!--USAR POSITION ABSOLUTE-->
+                <div id="btnExcluir" class="button">
+                    <span>Excluir</span>
+                </div>
+                
+                <div id="popUp"> <!-- INICIO POP UP-->
+                    <span>Tem certeza que deseja remover essa vacina?</span>
+
+                    <div id="divBotoes">
+                        <div><button id="btnSim">SIM</button></div>
+                        <div><button id="btnCancelar">CANCELAR</button></div>
+                    </div>
+                </div> <!-- FIM POP UP-->
 
                 <div id="conteudo">
                     <button class="botao-padrao" id="botao-salvar">Salvar alterações</button>
@@ -92,7 +111,10 @@
                 
             </fieldset>
         </main>
-        
+
+    <!-- <script type="module" src="JS/home.js"></script> -->
+    
+    
     </body>
 
 </html>

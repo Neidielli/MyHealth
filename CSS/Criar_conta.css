@@ -1,7 +1,7 @@
 main {
     background-color: #add4d1;
 	border: 1px solid #add4d1;
-	height: calc(100vh - 90px);
+	height: calc(100vh - 67px);
 }
 input {
 	width: 280px;
@@ -13,6 +13,7 @@ input {
 label {
 	color: #FFFFFF;
 	font-size: 30px;
+	margin-left: 5px;
 }
 input.radio {
 	width: 30px;
@@ -44,6 +45,11 @@ fieldset {
 	height: 90px;
 	margin-left: 15px;
 	margin-right: 15px;
+}
+#lblAviso {
+	margin-left: calc(100vw / 2 - 120px);
+	font-size: 23px;
+	color: #FD7979;
 }
 /* ESTILIZAÇÃO DAS CLASS*/
 .div-labels {

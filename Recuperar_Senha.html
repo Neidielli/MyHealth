@@ -46,7 +46,14 @@
         </main>
         
     <!-- JS -->
-    <script type="module" src="JS/login.js"></script>
+    <script type="module">
+        import {recuperarSenha} from './JS/login.js'
+        
+
+        window.onload = function(){   
+            document.getElementById("botao-recuperar").addEventListener('click', recuperarSenha)
+        }
+    </script>
 
     </body>
 

@@ -7,22 +7,28 @@ const getEmail = () => {
 const getSenha = () => {
     return document.getElementById("passwSenha").value
 }
+const getRepetirSenha = () => {
+    return document.getElementById("repetirSenha").value
+}
 const cadastrarUsuario = () => {
     const email = getEmail()
     const senha = getSenha()
+    const repetirSenha = getRepetirSenha() 
 
-    createUserWithEmailAndPassword(auth, email, senha)
-    .then((user) => {
-        console.log(JSON.stringify(user))
-    })
-    .catch((error) => {
-        console.log(error.message)
-    })
-}
-const criarConta = () => {
-    window.location.href = './Criar_conta.html'
+    if (repetirSenha === senha) {
+        createUserWithEmailAndPassword(auth, email, senha)
+        .then((user) => {
+            window.location.href='Home.html';
+            console.log(JSON.stringify(user))
+        })
+        .catch((error) => {
+            console.log(error.message)
+        })
+    } else {
+        document.getElementById("lblAviso").innerHTML = "Senha não confere!"
+    }
+
 }
 window.onload = () => {    
     document.getElementById("botao-cadastrar").addEventListener('click', cadastrarUsuario)
-    document.getElementById("botao-criarconta").addEventListener('click', criarConta)
 }

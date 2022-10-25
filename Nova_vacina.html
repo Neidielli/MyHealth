@@ -19,7 +19,7 @@
                 </div>
                 
                 <div class="item-menu">
-                    <button>Minhas vacinas</button>
+                    <button onclick="window.location.href='Home.html';">Minhas vacinas</button>
                     <button onclick="window.location.href='Inicial.html';">Logout</button>
                 </div>
 
@@ -54,11 +54,11 @@
                     </div>
 
                     <div class="rigth">
-                        <input class="radio" type="radio" name="dose" id="dose"><span>1a. dose</span>
-                        <input class="radio" type="radio" name="dose" id="dose"><span>2a. dose</span>
-                        <input class="radio" type="radio" name="dose" id="dose"><span>3a. dose</span>
-                        <input class="radio" type="radio" name="dose" id="dose"><span>Reforço</span>
-                        <input class="radio" type="radio" name="dose" id="dose"><span>Dose única</span>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>1a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>2a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>3a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>Reforço</label>
+                        <input class="radio" type="radio" name="dose" id="dose"><label>Dose única</label>
                     </div>
                     
                 </div>
@@ -69,9 +69,21 @@
                     </div>
                     
                     <div class="rigth">
-                        <button id="selecionar-imagem">Selecionar imagem...</button>
+                
                         </br>
                         <img src="imagens/image-comprovante.png" id="imagem-selecionada">
+                        
+                    </div>
+                </div>
+
+                <div class="div-labels">
+                    <div class="left">
+                        <label>Comprovante da vacina</label>
+                    </div>
+                    
+                    <div class="rigth">
+                        <label id="selecionar-imagem" for="comprovante">Selecionar imagem...</label>
+                        <input type="file" id="comprovante">
                     </div>
                 </div>
 

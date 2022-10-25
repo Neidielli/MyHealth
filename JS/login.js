@@ -9,7 +9,7 @@ const getSenha = () => {
     return document.getElementById("passwSenha").value
 }
 
-const autenticarUsuario = () => {
+export function autenticarUsuario(){
     const email = getEmail()
     const senha = getSenha()
 
@@ -22,7 +22,7 @@ const autenticarUsuario = () => {
     })
 }
 
-const recuperarSenha = () => {
+export function recuperarSenha(){
     const email = getEmail()
 
     sendPasswordResetEmail(auth, email)
@@ -33,12 +33,6 @@ const recuperarSenha = () => {
         console.log('Erro na solicitação')
      })
 }
-const esqueceSenha = () => {
-    window.location.href = "./Recuperar_Senha.html"
-}
-
-window.onload = () => {    
-    document.getElementById("botao-entrar").addEventListener('click', autenticarUsuario)
-    document.getElementById("botao-recuperar").addEventListener('click', recuperarSenha)
-    document.getElementById("esqueci-senha").addEventListener('click', esqueceSenha)
+export function esqueceSenha(){
+    window.location.href = "../Recuperar_Senha.html"
 }
