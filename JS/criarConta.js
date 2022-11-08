@@ -25,6 +25,7 @@ const cadastrarUsuario = () => {
             console.log(error.message)
         })
     } else {
+        console.log("entrou")
         document.getElementById("lblAviso").innerHTML = "Senha não confere!"
     }
 

@@ -1,6 +1,6 @@
 import {app, auth} from '../config/firebase.js'
-import {signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-import {sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+import {signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js"
+import {sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js"
 
 const getEmail = () => {
     return document.getElementById("txtEmail").value
@@ -22,7 +22,7 @@ export function autenticarUsuario(){
     })
 }
 
-export function recuperarSenha(){
+export function recuperarSenha() {
     const email = getEmail()
 
     sendPasswordResetEmail(auth, email)
