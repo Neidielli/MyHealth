@@ -1,8 +1,12 @@
 main {
     background-color: #add4d1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 /* ESTILIZAÇÃO DAS IDS*/
-#menu {
+#menu {   					/* header */
 	height: 90px;
 	display: flex;
 	flex-direction: row;
@@ -18,12 +22,15 @@ input.pesquisa {
 	font-size: 23px;
 }
 /* ESTILIZAÇÃO DAS ID's*/
-#card-vacinas button {
+#buttonDose{
+	display: flex;
+	justify-content: center;
 	background-color: #3F92C5;
 	width: 90px;
 	height: 23px;
 	border: none;
 	color: #FFFFFF;
+	border-radius: 2px;
 }
 #pesquisa {
     height: 35px;
@@ -32,19 +39,13 @@ input.pesquisa {
 	padding-left: 50px;
 	border: none;
 }
-#card-vacinas {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
-    margin-left: 159px;
-    margin-right: 159px;
-}
-#proxima-dose {
+#proxVacina {
 	text-align: right;
 	margin-right: 10px;
-	color: red;
+	color: #FD7979;
 	font-size: 16px;
+	width: 100%;
+	margin-top: 30px;
 }
 #botao-novavacina {
     margin-top: 80px;
@@ -59,7 +60,21 @@ input.pesquisa {
 #conteudo {
     text-align: center;	
 }
+#data{
+	color: #8B8B8B;
+}
 /* ESTILIZAÇÃO DAS CLASS*/
+.card-vacinas {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #FFFFFF;
+	padding: 5px;
+	width: 300px;
+    height: 290px;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
 .item-menu {
 	margin-top: 13px;
 	margin-bottom: 13px;
@@ -73,20 +88,24 @@ input.pesquisa {
 	margin-right: 22px;
 }
 .item-vacinas {
-    background-color: whitesmoke;
-    border-radius: 10px;
-    width: 330px;
-    height: 330px;
-	margin-bottom: 40px;
-	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	column-gap: 10px;
+	row-gap: 10px;
+	flex-wrap: wrap;
+	margin-top: 20px;
+	width: 90%;
 }
-.item-vacinas p, button, h1, h3{
+.card-vacinas p, button, h1, h3{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-.item-vacinas p{
-	color: #8B8B8B;
-}
-.item-vacinas h1{
+.card-vacinas h1{ /*Titulo da vacina*/
 	color: #3F92C5;
+}
+.card-vacinas img{
+	margin-top: 15px;
+	width: 95%;
+	height: 120px;
 }

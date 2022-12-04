@@ -13,12 +13,19 @@ export function autenticarUsuario(){
     const email = getEmail()
     const senha = getSenha()
 
+    //display: none no botão
+    // exibe uma animação de loading
+
     signInWithEmailAndPassword(auth, email, senha)
     .then((user) => {
        window.location.href = "./Home.html"
     })
     .catch((error) => {
         document.getElementById("lblAviso").innerHTML = "Email e/ou senha inválidos."
+    })
+    .finally ( () => {
+        // esconde o loading
+        // exibe dnv o botão 
     })
 }
 

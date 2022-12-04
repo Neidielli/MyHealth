@@ -60,8 +60,8 @@ fieldset {
 	width: 290px;
 }
 #comprovante {
-	background-color: #419ED7;
-    border: 1px solid #419ED7;
+	/* background-color: #419ED7;
+    border: 1px solid #419ED7; */
     box-sizing: border-box;
     height: 45px;
     width: 290px;

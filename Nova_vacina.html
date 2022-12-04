@@ -6,6 +6,65 @@
         <link rel="stylesheet" type="text/css" href="CSS/css_geral.css">
         <link rel="stylesheet" type="text/css" href="CSS/Nova_vacina.css">
         
+        <script type="module">
+            import {db} from './config/firebase.js'
+            import {addDoc, collection} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+        
+            // importa as informações dos campos na home
+            const getNome = () => {
+                return document.getElementById("nome-vacina").value
+            }
+            const getDose = () => {
+                return document.getElementById("dose").value
+            }
+            const getData = () => {
+                return document.getElementById("data-vacina").value
+            }
+            const getImg = () => {
+                return document.getElementById("comprovante").value
+            }
+            const getProxDose = () => {
+                return document.getElementById("proxima-vacina").value
+            }
+        
+            const setNome = (nome) => {
+                return document.getElementById("nome-vacina").value = nome
+            }
+            const setDose = (dose) => {
+                return document.getElementById("dose").value = dose
+            }
+            const setData = (data) => {
+                return document.getElementById("data-vacina").value = data
+            }
+            const setImg = (img) => {
+                return document.getElementById("selecionar-imagem").value = img
+            }
+            const setProxDose = (proxDose) => {
+                return document.getElementById("proxima-vacina").value = proxDose
+            }
+        
+            const cadastrar = () => {
+                addDoc( collection(db, "vacinas"), {
+                    nome: getNome(),
+                    dose: getDose(),
+                    data: getData(),
+                    img: getImg(),
+                    proxDose: getProxDose()
+                })
+                .then((result) => {
+                    console.log(JSON.stringify(result))
+                    window.location.href = "Home.html"
+                })
+                .catch((error) => {
+                    console.log("Erro ao persistir dados: " + error)
+                })
+            }
+        
+        
+            window.onload = () => {
+                document.getElementById("botao-cadastrar").addEventListener('click', cadastrar)
+            }
+        </script>
     </head>
 
     <body>
@@ -54,11 +113,11 @@
                     </div>
 
                     <div class="rigth">
-                        <input class="radio" type="radio" name="dose" id="dose"><label>1a. dose</label>
-                        <input class="radio" type="radio" name="dose" id="dose"><label>2a. dose</label>
-                        <input class="radio" type="radio" name="dose" id="dose"><label>3a. dose</label>
-                        <input class="radio" type="radio" name="dose" id="dose"><label>Reforço</label>
-                        <input class="radio" type="radio" name="dose" id="dose"><label>Dose única</label>
+                        <input class="radio" type="radio" name="dose" id="dose" value="1-dose"><label>1a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose" value="2-dose"><label>2a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose" value="3-dose"><label>3a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="dose" value="reforo"><label>Reforço</label>
+                        <input class="radio" type="radio" name="dose" id="dose" value="doseUnica"><label>Dose única</label>
                     </div>
                     
                 </div>
@@ -69,23 +128,10 @@
                     </div>
                     
                     <div class="rigth">
-                
-                        </br>
-                        <img src="imagens/image-comprovante.png" id="imagem-selecionada">
-                        
+                        <input type="text" name="comprovante" id="comprovante">
                     </div>
                 </div>
 
-                <div class="div-labels">
-                    <div class="left">
-                        <label>Comprovante da vacina</label>
-                    </div>
-                    
-                    <div class="rigth">
-                        <label id="selecionar-imagem" for="comprovante">Selecionar imagem...</label>
-                        <input type="file" id="comprovante">
-                    </div>
-                </div>
 
                 <div class="div-labels">
                     <div class="left">
@@ -106,7 +152,7 @@
         </main>
         
     <!-- JS -->
-    <script src="JS/novaVacina.js"></script>
+    
 
     </body>
 
