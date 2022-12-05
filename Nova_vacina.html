@@ -127,7 +127,7 @@
                         .catch((error) => {
                             console.log("Erro ao enviar imagem: " + error)
                         })
-                } else { // somente atualizar o documento
+                } else { // somente atualizar o documento/campos
                     updateDoc(doc(db, "vacinas", id), {
                         nome: getNome(),
                         dose: getDose(),
@@ -145,7 +145,7 @@
                 }
             }
 
-            const excluir = (id) => {
+            const excluir = (id) => { // precisa apagar o arquivo primeiro e depois o registro
                 deleteObject(ref(storage, getPathImg()))
                 .then(() => {
                     deleteDoc(doc(db, "vacinas", id))
@@ -192,6 +192,7 @@
                         setImg(documento.data().img)
                         setProxDose(documento.data().proxDose)
                         setPathImg(documento.data().pathImg)
+                        
                     })
                     .catch((error) => {
                         console.log("Erro ao recuperar o documento: " + error)
@@ -203,9 +204,8 @@
 
                 document.getElementById("botaoComprovante").addEventListener('change', function (event) {
                     file = event.target.files[0]
-                    // document.getElementById("imagem").src = URL.createObjectURL(file)
+                    document.getElementById("imgComprovante").src = URL.createObjectURL(file)
                 })
-                
             }
         </script>
     </head>
@@ -272,7 +272,11 @@
                     
                     <div class="rigth">
                         <input type="text" name="comprovante" id="comprovante">
-                        <input type="file" id="botaoComprovante">
+                        <input type="file" id="botaoComprovante">                       
+                        <div>
+                            <img id="imgComprovante">
+                        </div>
+                        
                     </div>
                 </div>
 
@@ -310,11 +314,7 @@
             </div>
 
         </main>
-        
-    <!-- JS -->
-    <script src="JS/Editar_vacina.js"></script>
     
-
     </body>
 
 </html>
