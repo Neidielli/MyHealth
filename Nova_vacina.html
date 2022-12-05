@@ -7,16 +7,28 @@
         <link rel="stylesheet" type="text/css" href="CSS/Nova_vacina.css">
         
         <script type="module">
-            import {db} from './config/firebase.js'
-            import {addDoc, collection} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
-        
+
+            import {db, storage} from './config/firebase.js'
+            import {addDoc, collection, getDoc, doc, updateDoc, deleteDoc} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+            import {uploadBytes, ref, getDownloadURL, deleteObject} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
+
+            var file = null;
+            var pathImg = null;
+
             // importa as informações dos campos na home
             const getNome = () => {
                 return document.getElementById("nome-vacina").value
             }
-            const getDose = () => {
-                return document.getElementById("dose").value
+
+            const getDose = () => { // Percorre todos os radios button verificando qual foi selecionado
+               const doseVacina = document.querySelectorAll('[name="dose"]')
+               for (const dose of doseVacina) {
+                    if (dose.checked) {
+                        return dose.value
+                    }                   
+               }
             }
+
             const getData = () => {
                 return document.getElementById("data-vacina").value
             }
@@ -25,6 +37,9 @@
             }
             const getProxDose = () => {
                 return document.getElementById("proxima-vacina").value
+            }
+            const getPathImg = () => {
+                return pathImg
             }
         
             const setNome = (nome) => {
@@ -37,32 +52,160 @@
                 return document.getElementById("data-vacina").value = data
             }
             const setImg = (img) => {
-                return document.getElementById("selecionar-imagem").value = img
+                return document.getElementById("comprovante").value = img
             }
             const setProxDose = (proxDose) => {
                 return document.getElementById("proxima-vacina").value = proxDose
             }
+            const setPathImg = (caminho) => {
+                pathImg = caminho
+            }
+
+            const geraAleatorio = () => { // função para retornar um valor aleatorio para as img
+                const id = Date.now().toString(16) + Math.random().toString(16)
+                return id.replace(/\./g, '')
+            }
         
             const cadastrar = () => {
-                addDoc( collection(db, "vacinas"), {
-                    nome: getNome(),
-                    dose: getDose(),
-                    data: getData(),
-                    img: getImg(),
-                    proxDose: getProxDose()
-                })
-                .then((result) => {
-                    console.log(JSON.stringify(result))
-                    window.location.href = "Home.html"
+                
+                // precisa enviar a img pro servidor (storage) e pegar a url de download
+                const arqRef = "imagens/" + geraAleatorio()
+
+                uploadBytes(ref(storage, arqRef), file)
+                    .then((result) => {
+                        console.log("Arquivo enviado com sucesso: " + result)
+                        getDownloadURL(ref(storage, arqRef))
+                        .then((url) => {
+                            console.log("URL: " + url)
+                            addDoc( collection(db, "vacinas"), {
+                                nome: getNome(),
+                                dose: getDose(),
+                                data: getData(),
+                                img: url,
+                                pathImg: arqRef, // caminho da imagem no servidor
+                                proxDose: getProxDose()
+                            })
+                            .then((result) => {
+                                console.log(JSON.stringify(result))
+                                window.location.href = "Home.html"
+                            })
+                            .catch((error) => {
+                                console.log("Erro ao persistir dados: " + error)
+                            })
+                        })
+                        .catch((error) => {
+                            console.log("Erro ao recuperar url de download: " + error)
+                        })
+                    })
+                    .catch((error) => {
+                        console.log("Erro ao enviar imagem: " + error)
+                    })
+            }
+
+            const salvar = (id) => {
+
+                if(file) { // verifica se foi alterado a imagem
+                    uploadBytes(ref(storage, getPathImg()), file) // sobreescreve o arq anterior
+                        .then((result) => {
+                            console.log("Arquivo enviado com sucesso: " + result)
+                            updateDoc(doc(db, "vacinas", id), {
+                                nome: getNome(),
+                                dose: getDose(),
+                                data: getData(),
+                                img: getImg(),
+                                pathImg: getPathImg(),
+                                proxDose: getProxDose()
+                            })
+                            .then(() => {
+                                window.location.href = "Home.html"
+                            })
+                            .catch((error) => {
+                                console.log("Erro ao atualizar o documento: " + error)
+                            })
+                            
+                        })
+                        .catch((error) => {
+                            console.log("Erro ao enviar imagem: " + error)
+                        })
+                } else { // somente atualizar o documento
+                    updateDoc(doc(db, "vacinas", id), {
+                        nome: getNome(),
+                        dose: getDose(),
+                        data: getData(),
+                        img: getImg(),
+                        pathImg: getPathImg(),
+                        proxDose: getProxDose()
+                    })
+                    .then(() => {
+                        window.location.href = "Home.html"
+                    })
+                    .catch((error) => {
+                        console.log("Erro ao atualizar o documento: " + error)
+                    })
+                }
+            }
+
+            const excluir = (id) => {
+                deleteObject(ref(storage, getPathImg()))
+                .then(() => {
+                    deleteDoc(doc(db, "vacinas", id))
+                    .then(() => {
+                        window.location.href = "Home.html"
+                    })
+                    .catch((erro) => {
+                        console.log("Erro ao excluir documento: " + erro)
+                    })
                 })
                 .catch((error) => {
-                    console.log("Erro ao persistir dados: " + error)
+                    console.log("erro ao excluir o arquivo")
                 })
+               
             }
         
         
             window.onload = () => {
+                const id = new URLSearchParams(window.location.search).get('id')
+
+                document.getElementById("btnExcluir").addEventListener("click", () => {
+                    document.getElementById("popUp").style.display = "block"
+                })
+                document.getElementById("btnSim").addEventListener("click", () => {excluir(id)})
+                document.getElementById("btnCancelar").addEventListener("click", () => {
+                    document.getElementById("popUp").style.display = "none"
+                })
+
                 document.getElementById("botao-cadastrar").addEventListener('click', cadastrar)
+                document.getElementById("botao-salvar").addEventListener('click', () => {salvar(id)})
+
+                if(id) { /*Enviar os dados para visualização e edição*/
+
+                    document.getElementById("botao-cadastrar").style.display = 'none' // esconde o botao cadastrar quando houver um usuario pra editar
+
+                    getDoc(doc(db, "vacinas", id))
+                    .then((documento) => {
+                        setNome(documento.data().nome)
+
+                        const dose = document.querySelector("#" + documento.data().dose); // Apresenta o valor selecionado a partir do id
+                        dose.checked = true; // seleciona true pra selecionar a bolinha
+                        
+                        setData(documento.data().data)
+                        setImg(documento.data().img)
+                        setProxDose(documento.data().proxDose)
+                        setPathImg(documento.data().pathImg)
+                    })
+                    .catch((error) => {
+                        console.log("Erro ao recuperar o documento: " + error)
+                    })
+                } else {
+                    document.getElementById("btnExcluir").style.display = 'none' // esconde o botao excluir quando não houver um usuario pra editar
+                    document.getElementById("botao-salvar").style.display = 'none' // esconde o botao salvar quando não houver um usuario pra editar
+                }
+
+                document.getElementById("botaoComprovante").addEventListener('change', function (event) {
+                    file = event.target.files[0]
+                    // document.getElementById("imagem").src = URL.createObjectURL(file)
+                })
+                
             }
         </script>
     </head>
@@ -113,11 +256,11 @@
                     </div>
 
                     <div class="rigth">
-                        <input class="radio" type="radio" name="dose" id="dose" value="1-dose"><label>1a. dose</label>
-                        <input class="radio" type="radio" name="dose" id="dose" value="2-dose"><label>2a. dose</label>
-                        <input class="radio" type="radio" name="dose" id="dose" value="3-dose"><label>3a. dose</label>
-                        <input class="radio" type="radio" name="dose" id="dose" value="reforo"><label>Reforço</label>
-                        <input class="radio" type="radio" name="dose" id="dose" value="doseUnica"><label>Dose única</label>
+                        <input class="radio" type="radio" name="dose" id="Primeiradose" value="Primeiradose"><label>1a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="Segundadose" value="Segundadose"><label>2a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="Terceiradose" value="Terceiradose"><label>3a. dose</label>
+                        <input class="radio" type="radio" name="dose" id="reforco" value="reforco"><label>Reforço</label>
+                        <input class="radio" type="radio" name="dose" id="doseUnica" value="doseUnica"><label>Dose única</label>
                     </div>
                     
                 </div>
@@ -129,6 +272,7 @@
                     
                     <div class="rigth">
                         <input type="text" name="comprovante" id="comprovante">
+                        <input type="file" id="botaoComprovante">
                     </div>
                 </div>
 
@@ -143,15 +287,32 @@
                     </div>
                 </div>
 
+                <div id="btnExcluir" class="button">
+                    <span>Excluir</span>
+                </div>
+                
+                <div id="popUp"> <!-- INICIO POP UP-->
+                    </br>
+                    </br>
+                    <span>Tem certeza que deseja remover essa vacina?</span>
+
+                    <div id="divBotoes">
+                        <div><button id="btnSim">SIM</button></div>
+                        <div><button id="btnCancelar">CANCELAR</button></div>
+                    </div>
+                </div> <!-- FIM POP UP-->
+
             </fieldset>
 
             <div id="conteudo">
                 <button class="botao-padrao" id="botao-cadastrar">Cadastrar</button>
+                <button class="botao-padrao" id="botao-salvar">Salvar alterações</button>
             </div>
 
         </main>
         
     <!-- JS -->
+    <script src="JS/Editar_vacina.js"></script>
     
 
     </body>

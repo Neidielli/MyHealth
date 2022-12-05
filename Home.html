@@ -26,18 +26,23 @@
                 window.location.href = 'Nova_vacina.html' 
             }
     
-            const listaVacinas = []
+            const listaVacinas = [] // lista para a barra de pesquisa
             
            
             const carregarVacinas = () => {
                 const q = query(collection(db, "vacinas"))
 
-                console.log(q)
-    
                 onSnapshot(q, (results) => { // função executada toda vez que ha mudanças no banco
                     results.forEach((documento) => {
                         createCardVacina(documento.data().nome, documento.data().dose, documento.data().data ,documento.data().img, documento.data().proxDose, documento.id)
-                        console.log(documento.data().urlFoto)
+                        // listaVacinas.push({
+                        //     id: documento.id,
+                        //     nome: documento.data().nome,
+                        //     dose: documento.data().dose,
+                        //     data: documento.data().data,
+                        //     img: documento.data().img,
+                        //     proxDose: documento.data().proxDose
+                        // })                       
                     })
                     // showCardVacina(listaVacinas)       
                 })
@@ -46,7 +51,7 @@
             // const showCardVacina = (lista) => {
             //     document.getElementById("listaVacinas").innerHTML = ""
             //     lista.forEach((documento) => {
-            //         createCardVacina(documento.nome, documento.dataNascimento, documento.urlFoto, documento.id)
+            //         createCardVacina(documento.data().nome, documento.data().dose, documento.data().data ,documento.data().img, documento.data().proxDose, documento.id)
             //     })
             // }
     
@@ -97,12 +102,13 @@
             window.onload = () => {
                 document.getElementById("btnLogOut").addEventListener('click', logOut)
                 document.getElementById("botao-novavacina").addEventListener('click', goToNovaVacina)
-                // document.getElementById("txtSearch").addEventListener('keyup', () => {
-                //     const searchString = document.getElementById("txtSearch").value.trim()
-                //     showCardVacina(listaAlunos.filter(aluno => aluno.nome.includes(searchString)))
+                // document.getElementById("pesquisa").addEventListener('keyup', () => {
+                //     const barraPesquisa = document.getElementById("pesquisa").value.trim()
+                //     showCardVacina(listaVacinas.filter(vacina => vacina.nome.includes(barraPesquisa)))
                 // })
     
-                carregarVacinas()                   
+                carregarVacinas() // toda vez que há mudanças no bd
+                // showCardVacina()  // listar vacinas pela barra                 
             }
             
         </script>

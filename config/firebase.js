@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-import {getAuth} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
 import { initializeFirestore } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCQ_7u29-VxCLhxo4D618Aq87d1v-A1x0E",
@@ -14,6 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = initializeFirestore(app, {experimentalForceLongPolling: true})
+const storage = getStorage(app);
 
 // exportar os obj para que qualquer outro arquivo possa acessa-los
-export {app, auth, db}
+export {app, auth, db, storage}
