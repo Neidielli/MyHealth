@@ -25,6 +25,9 @@ fieldset {
 	margin-top: 48px;
 }
 /* ESTILIZAÇÃO DAS IDS*/
+#comprovante { /*input que mostra a url da foto */
+	display: none;
+}
 #menu {
 	display: flex;
 	flex-direction: row;
@@ -136,6 +139,11 @@ fieldset {
 	background-color: #FF8383;
 	color: #FFFFFF;
 	font-size: 30px;
+	border-radius: 5px;
+}
+#btnSim:hover {
+	transform: scale(1.1);
+    transition: all 0.5s;
 }
 #btnCancelar {
 	height: 65px;
@@ -143,9 +151,18 @@ fieldset {
 	background-color: #3F92C5;
 	color: #FFFFFF;
 	font-size: 30px;
+	border-radius: 5px;
+}
+#btnCancelar:hover {
+	transform: scale(1.1);
+    transition: all 0.5s;
 }
 #conteudo {
     text-align: center;	
+}
+#imgComprovante {
+	width: 30%;
+	height: 120px;
 }
 /* ESTILIZAÇÃO DAS CLASS*/
 .item-menu {

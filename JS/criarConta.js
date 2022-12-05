@@ -22,10 +22,12 @@ const cadastrarUsuario = () => {
             console.log(JSON.stringify(user))
         })
         .catch((error) => {
-            console.log(error.message)
+            console.log(error.code)
+            if(error.code === 'auth/weak-password') {
+                document.getElementById("lblAviso").innerHTML = "Senha é muito fraca!"
+            }        
         })
     } else {
-        console.log("entrou")
         document.getElementById("lblAviso").innerHTML = "Senha não confere!"
     }
 

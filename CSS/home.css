@@ -39,6 +39,10 @@ input.pesquisa {
 	padding-left: 50px;
 	border: none;
 }
+#pesquisa:hover {
+	transform: scale(1.05);
+    transition: all 0.5s;
+}
 #proxVacina {
 	text-align: right;
 	margin-right: 10px;
@@ -94,13 +98,15 @@ input.pesquisa {
 }
 .item-vacinas {
 	display: flex;
-	justify-content: space-between;
 	flex-direction: row;
-	column-gap: 10px;
-	row-gap: 10px;
+	column-gap: 55px;
+	row-gap: 30px;
 	flex-wrap: wrap;
-	margin-top: 20px;
 	width: 90%;
+}
+.card-vacinas:hover {
+	transform: scale(1.05);
+    transition: all 0.5s;
 }
 .card-vacinas p, button, h1, h3{
 	margin-top: 10px;
