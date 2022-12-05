@@ -44,6 +44,11 @@ main button {
 	font-size: 24px;
 	width: 304px;
 	height: 59px;
+	border-radius: 5px;
+}
+#botao-criarconta:hover {
+	transform: scale(1.1);
+    transition: all 0.5s;
 }
 #titulo {
 	text-align: center;
