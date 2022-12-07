@@ -8,12 +8,24 @@
         
         <script type="module">
 
-            import {db, storage} from './config/firebase.js'
+            import {db, storage, app, auth} from './config/firebase.js'
             import {addDoc, collection, getDoc, doc, updateDoc, deleteDoc} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
             import {uploadBytes, ref, getDownloadURL, deleteObject} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-storage.js";
+            import {signOut} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js"
+
+            auth.onAuthStateChanged( function(user) {
+                if(!auth.currentUser) {
+                    window.location.href = "Inicial.html"
+                }
+            })
+
+            const logOut = () => {
+                signOut(auth)
+            }
 
             var file = null;
             var pathImg = null;
+            
 
             // importa as informações dos campos na home
             const getNome = () => {
@@ -66,40 +78,85 @@
                 return id.replace(/\./g, '')
             }
         
-            const cadastrar = () => {
+            // const cadastrar = () => {
                 
+            //     // precisa enviar a img pro servidor (storage) e pegar a url de download
+            //     const arqRef = "imagens/" + geraAleatorio()
+             
+            //     uploadBytes(ref(storage, arqRef), file)
+            //         .then((result) => {
+            //             console.log("Arquivo enviado com sucesso: " + result)
+            //             getDownloadURL(ref(storage, arqRef))
+            //             .then((url) => {
+            //                 console.log("URL: " + url)
+            //                 addDoc( collection(db, "vacinas"), {
+            //                     nome: getNome(),
+            //                     dose: getDose(),
+            //                     data: getData(),
+            //                     img: url,
+            //                     pathImg: arqRef, // caminho da imagem no servidor
+            //                     proxDose: getProxDose()
+            //                 })
+            //                 .then((result) => {
+            //                     console.log(JSON.stringify(result))
+            //                     window.location.href = "Home.html"
+            //                 })
+            //                 .catch((error) => {
+            //                     console.log("Erro ao persistir dados: " + error)
+            //                 })
+            //             })
+            //             .catch((error) => {
+            //                 console.log("Erro ao recuperar url de download: " + error)
+            //             })
+            //         })
+            //         .catch((error) => {
+            //             console.log("Erro ao enviar imagem: " + error)
+            //         })
+            // }
+            const cadastrar = () => {
+                auth.onAuthStateChanged( function(user) {
                 // precisa enviar a img pro servidor (storage) e pegar a url de download
                 const arqRef = "imagens/" + geraAleatorio()
+                const email = user.email
 
-                uploadBytes(ref(storage, arqRef), file)
-                    .then((result) => {
-                        console.log("Arquivo enviado com sucesso: " + result)
-                        getDownloadURL(ref(storage, arqRef))
-                        .then((url) => {
-                            console.log("URL: " + url)
-                            addDoc( collection(db, "vacinas"), {
-                                nome: getNome(),
-                                dose: getDose(),
-                                data: getData(),
-                                img: url,
-                                pathImg: arqRef, // caminho da imagem no servidor
-                                proxDose: getProxDose()
-                            })
-                            .then((result) => {
-                                console.log(JSON.stringify(result))
-                                window.location.href = "Home.html"
-                            })
-                            .catch((error) => {
-                                console.log("Erro ao persistir dados: " + error)
-                            })
-                        })
-                        .catch((error) => {
-                            console.log("Erro ao recuperar url de download: " + error)
-                        })
-                    })
-                    .catch((error) => {
-                        console.log("Erro ao enviar imagem: " + error)
-                    })
+                uploadBytes(ref(storage, arqRef), file, email)
+                 .then((result) => {
+                     console.log("Arquivo enviado com sucesso: " + result)
+                     getDownloadURL(ref(storage, arqRef))
+                     .then((url) => {
+                         console.log("URL: " + url)
+                         addDoc( collection(db, "vacinas"), {
+                             email: user.email,
+                             nome: getNome(),
+                             dose: getDose(),
+                             data: getData(),
+                             img: url,
+                             pathImg: arqRef, // caminho da imagem no servidor
+                             proxDose: getProxDose()
+                         })
+                         .then((result) => {
+                             console.log(JSON.stringify(result))
+                             window.location.href = "Home.html"
+                         })
+                         .catch((error) => {
+                             console.log("Erro ao persistir dados: " + error)
+                         })
+                     })
+                     .catch((error) => {
+                         console.log("Erro ao recuperar url de download: " + error)
+                     })
+                 })
+                 .catch((error) => {
+                     console.log("Erro ao enviar imagem: " + error)
+                 })
+
+                if(!auth.currentUser) {
+                    window.location.href = "Entrar.html"
+                }
+                })
+
+
+
             }
 
             const salvar = (id) => {
@@ -166,6 +223,8 @@
             window.onload = () => {
                 const id = new URLSearchParams(window.location.search).get('id')
 
+                document.getElementById("btnLogOut").addEventListener('click', logOut)
+
                 document.getElementById("btnExcluir").addEventListener("click", () => {
                     document.getElementById("popUp").style.display = "block"
                 })
@@ -207,6 +266,8 @@
                     document.getElementById("imgComprovante").src = URL.createObjectURL(file)
                 })
             }
+
+            
         </script>
     </head>
 
@@ -222,7 +283,7 @@
                 
                 <div class="item-menu">
                     <button onclick="window.location.href='Home.html';">Minhas vacinas</button>
-                    <button onclick="window.location.href='Inicial.html';">Logout</button>
+                    <button id="btnLogOut">Logout</button>
                 </div>
 
             </div> <!-- FIM MENU -->

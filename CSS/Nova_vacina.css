@@ -109,6 +109,11 @@ fieldset {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 5px;
+}
+#btnExcluir:hover {
+	transform: scale(1.1);
+    transition: all 0.5s;
 }
 #popUp {
 	width: 600px;
@@ -119,6 +124,7 @@ fieldset {
 	left: calc(100vw / 2 - 300px);
 	display: none;
 	border: 0.5px solid grey;
+	border-radius: 5px;
 }
 #popUp span {
 	font-size: 24px;

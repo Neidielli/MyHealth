@@ -11,11 +11,11 @@
             import {db, app, auth} from './config/firebase.js'
             import {query, collection, onSnapshot, where} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js"
             import {signOut} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js"
-                
+            
             auth.onAuthStateChanged( function(user) {
                 if(!auth.currentUser) {
-                    window.location.href = "Entrar.html"
-                }
+                    window.location.href = "Inicial.html"
+                } 
             })
 
             const logOut = () => {
@@ -29,23 +29,52 @@
             const listaVacinas = [] // lista para a barra de pesquisa, guarda todas as vacinas recuperadas do bd
             
            
-            const carregarVacinas = () => {
-                const q = query(collection(db, "vacinas"))
+            // const carregarVacinas = () => {
+                
+            //     const q = query(collection (db, "vacinas"))
+                
 
-                onSnapshot(q, (results) => { // função executada toda vez que ha mudanças no banco
-                    results.forEach((documento) => {
-                        // createCardVacina(documento.data().nome, documento.data().dose, documento.data().data ,documento.data().img, documento.data().proxDose, documento.id)
-                        listaVacinas.push({
-                            id: documento.id,
-                            nome: documento.data().nome,
-                            dose: documento.data().dose,
-                            data: documento.data().data,
-                            img: documento.data().img,
-                            proxDose: documento.data().proxDose
-                        })                       
+            //     onSnapshot(q, (results) => { // função executada toda vez que ha mudanças no banco
+            //         results.forEach((documento) => {
+            //             // createCardVacina(documento.data().nome, documento.data().dose, documento.data().data ,documento.data().img, documento.data().proxDose, documento.id)
+            //             listaVacinas.push({
+            //                 id: documento.id,
+            //                 nome: documento.data().nome,
+            //                 dose: documento.data().dose,
+            //                 data: documento.data().data,
+            //                 img: documento.data().img,
+            //                 proxDose: documento.data().proxDose
+            //             })                       
+            //         })
+            //         showCardVacina(listaVacinas)       
+            //     })
+            // }
+            const carregarVacinas = () => {
+                auth.onAuthStateChanged( function(user) { // função para conseguir importar o email do usuario
+                const q = query(collection (db, "vacinas"), where('email', '==', user.email)) // filtra pelo email
+
+                    onSnapshot(q, (results) => { // função executada toda vez que ha mudanças no banco
+                        results.forEach((documento) => {
+                            // createCardVacina(documento.data().nome, documento.data().dose, documento.data().data ,documento.data().img, documento.data().proxDose, documento.id)
+                            listaVacinas.push({
+                                email: documento.data().email,
+                                id: documento.id,
+                                nome: documento.data().nome,
+                                dose: documento.data().dose,
+                                data: documento.data().data,
+                                img: documento.data().img,
+                                proxDose: documento.data().proxDose
+                            })
+                        })
+                        showCardVacina(listaVacinas)
                     })
-                    showCardVacina(listaVacinas)       
+
+                    if(!auth.currentUser) { // autenticação
+                        window.location.href = "Entrar.html"
+                    } 
+
                 })
+
             }
     
             const showCardVacina = (lista) => {
@@ -107,8 +136,8 @@
                     showCardVacina(listaVacinas.filter(vacina => vacina.nome.includes(barraPesquisa))) // filter: função do js que verifica em cada registro, se ele possui o nome que está sendo digitado
                 })
     
-                carregarVacinas() // toda vez que há mudanças no bd
-                // showCardVacina()  // listar vacinas pela barra                 
+                    carregarVacinas() // toda vez que há mudanças no bd
+                             
             }
             
         </script>
