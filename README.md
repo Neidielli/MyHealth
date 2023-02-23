@@ -29,4 +29,6 @@ Os requisitos desta aplicação são:
 * Apresentação da dose no card de vacinas
 * Editar: recuperar imagem do banco
 * Barra de pesquisa: filtrar por nome e data
+
+# ⚙️ Execução:
  
